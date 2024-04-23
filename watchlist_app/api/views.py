@@ -2,6 +2,7 @@ from rest_framework.response import Response
 # from rest_framework.decorators import api_view
 from rest_framework import status
 from rest_framework.views import APIView
+from rest_framework import generics
 
 from watchlist_app.models import Watchlist, StreamPlatform
 from watchlist_app.api.serializers import WatchlistSerializer, StreamPlatformSerializer
