@@ -4,8 +4,21 @@ from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework import generics
 
-from watchlist_app.models import Watchlist, StreamPlatform
-from watchlist_app.api.serializers import WatchlistSerializer, StreamPlatformSerializer
+from watchlist_app.models import Watchlist, StreamPlatform, Review
+from watchlist_app.api.serializers import (
+    WatchlistSerializer, StreamPlatformSerializer, ReviewSerializer)
+
+
+class ReviewList(generics.ListCreateAPIView):
+
+    queryset = Review.objects.all()
+    serializer_class = ReviewSerializer
+
+
+class ReviewDetail(generics.RetrieveUpdateDestroyAPIView):
+
+    queryset = Review.objects.all()
+    serializer_class = ReviewSerializer
 
 
 class StreamPlatformAV(APIView):
