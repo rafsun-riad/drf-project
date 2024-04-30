@@ -11,8 +11,10 @@ from watchlist_app.api.serializers import (
 
 class ReviewList(generics.ListCreateAPIView):
 
-    queryset = Review.objects.all()
     serializer_class = ReviewSerializer
+
+    def get_queryset(self):
+        return super().get_queryset()
 
 
 class ReviewDetail(generics.RetrieveUpdateDestroyAPIView):
