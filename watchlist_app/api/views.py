@@ -9,7 +9,17 @@ from watchlist_app.api.serializers import (
     WatchlistSerializer, StreamPlatformSerializer, ReviewSerializer)
 
 
-class ReviewList(generics.ListCreateAPIView):
+class ReviewCreate(generics.CreateAPIView):
+    serializer_class = ReviewSerializer
+
+    def perform_create(self, serializer):
+        pk = self.kwargs.get('pk')
+        movie = Watchlist.objects.get(pk=pk)
+
+        serializer.save(watchlist=movie)
+
+
+class ReviewList(generics.ListAPIView):
 
     serializer_class = ReviewSerializer
 
