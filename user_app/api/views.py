@@ -3,7 +3,7 @@ from user_app.api.serializers import RegistrationSerializer
 from rest_framework.response import Response
 
 
-@api_view([POST,])
+@api_view(['POST',])
 def registration_view(request):
 
     if request.method == 'POST':
